@@ -9,8 +9,12 @@ router.get('/notas', (req, res) => {
 
 // Adicionando uma nota
 router.post('/notas', (req, res) => {
-  res.send({type:'POST'})
-  // console.log(req)
+  console.log(req.body)
+  res.send({
+    type:'POST',
+    body: req.body,
+    id: "algum número"
+  })
 })
 
 // Atualizando uma nota

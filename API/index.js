@@ -1,10 +1,10 @@
 require('dotenv').config()
 const PORT = process.env.port || 3001
 const express = require('express')
-// const routes = require('./routes/api') // app.use já importa
 const app = express()
 
-// inicializando routa
-app.use('/api', require('./routes/api'))
+// Middlewares:
+app.use(express.json())
+app.use('/api', require('./routes/api')) // importando aqui ao invés de usar: const routes = require('./routes/api')
 
-app.listen(PORT, () => console.log('rodando na porta:', PORT))
+app.listen(PORT, () => console.log('Rodando na porta:', PORT))

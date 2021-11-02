@@ -1,6 +1,6 @@
 # Iniciando MongoDB no Mac:
 
-# MongoDB
+# MongoDB - Anotações
 
 Instalar, melhor seguir ref do site oficial:
 
@@ -23,3 +23,12 @@ Descobrindo versão:
 mongod -version
 
 ---
+
+Collections no mongoDB são como tables no MySQL
+
+Schemas definem a estrutura de dados dos objetos, ex:
+
+{
+  title: String,
+  pinned: Boolean
+}
