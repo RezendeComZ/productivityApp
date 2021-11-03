@@ -1,19 +1,16 @@
 const express = require('express')
 const router = express.Router()
+const Nota = require('../models/nota')
 
 // Pegando uma lista de notas do banco de dados
 router.get('/notas', (req, res) => {
   res.send({type:'GET'})
-  console.log('entrou');
 })
 
 // Adicionando uma nota
 router.post('/notas', (req, res) => {
-  console.log(req.body)
-  res.send({
-    type:'POST',
-    body: req.body,
-    id: "algum número"
+  Nota.create(req.body).then(nota => { // é uma promisse, e depois vem o 'then'
+    res.send(nota)
   })
 })
 
