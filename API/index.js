@@ -12,4 +12,9 @@ mongoose.Promise = global.Promise // ver se isso ainda é necessário
 app.use(express.json())
 app.use('/api', require('./routes/api')) // importando aqui ao invés de usar: const routes = require('./routes/api')
 
+// error handlling
+app.use((err, req, res, next) => {
+  res.status(422).send({error: err.message})
+})
+
 app.listen(PORT, () => console.log('Rodando na porta:', PORT))
