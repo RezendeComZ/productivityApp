@@ -21,7 +21,9 @@ router.put('/notas/:id', (req, res, next) => {
 
 // Apagando uma nota
 router.delete('/notas/:id', (req, res, next) => {
-  res.send({type:'DELETE'})
+  Nota.deleteOne({_id: req.params.id}).then(nota => {
+    res.send(nota)
+  })
 })
 
 module.exports = router

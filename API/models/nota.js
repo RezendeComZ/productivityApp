@@ -12,6 +12,7 @@ const NotaSchema = new Schema({
   pinned: Boolean,
   color: String,
   reminders: [Number],
+  expiration: Number,
   permissions: [Object], // Ou Map?
   url: String
 })
