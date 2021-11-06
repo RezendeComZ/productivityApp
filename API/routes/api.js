@@ -16,7 +16,11 @@ router.post('/notas', (req, res, next) => {
 
 // Atualizando uma nota
 router.put('/notas/:id', (req, res, next) => {
-  res.send({type:'PUT'})
+  Nota.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(() => {
+    Nota.findOne({_id: req.params.id}).then(nota => {
+      res.send(nota)
+    })
+  })
 })
 
 // Apagando uma nota
