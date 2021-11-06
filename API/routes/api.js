@@ -1,14 +1,41 @@
+const util = require('../util')
 const express = require('express')
 const router = express.Router()
 const Nota = require('../models/nota')
 
-// Pegando uma lista de notas do banco de dados
+// GET de todas as notas
 router.get('/notas', (req, res, next) => {
-  res.send({type:'GET'})
+  let query = util.objValuesToLowerCase(req.query)
+
+  const { color, labels } = query
+  if (Object.keys(query).length === 0) {
+    Nota.find({}).then(notas => {
+      res.send(notas)
+    })
+  } else if (labels) {
+    Nota.find({labels}).then(notas => {
+      res.send(notas)
+    })
+  } else if (color) {
+    Nota.find({color}).then(notas => {
+      res.send(notas)
+    })
+  }
 })
 
-// Adicionando uma nota
+// GET individual de nota
+router.get('/notas/:id', (req, res, next) => {
+  const { color, labels } = req.query
+  
+
+  Nota.find({_id: req.params.id}).then(nota => {
+    res.send(nota)
+  })
+})
+
+// POST - Adicionando uma nota
 router.post('/notas', (req, res, next) => {
+  
   Nota.create(req.body).then(nota => {
     res.send(nota)
   }).catch(next)
