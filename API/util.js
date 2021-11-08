@@ -5,5 +5,11 @@ module.exports = {
     }
   
     return obj
+  },
+  processNota: nota => {
+    nota.labels = nota.labels.map(label => label.toLowerCase())
+    nota.color = nota.color.toLowerCase()
+
+    return nota
   }
 }

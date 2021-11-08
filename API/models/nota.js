@@ -1,13 +1,18 @@
+// traduzir para inglês
+// Coloca msg de tipo inválido?
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const NotaSchema = new Schema({
-  title: String,
+  title: {type: String,
+          maxLength: [140, "Máximo de 140 caracteres para 'título'"]},
   body: {
     type: String,
-    required: [true, 'O body é obrigatório']
+    required: [true, 'O body é obrigatório'],
+    maxLength: [2500, "Máximo de 2500 caracteres para 'body'"]
   },
-  lists: [[String]],
+  lists: [[{type: String, maxLength: [2000, "Máximo de 2000 caracteres para 'lists'"]}]],
   labels: [String],
   pinned: Boolean,
   color: String,

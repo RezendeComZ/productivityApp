@@ -12,12 +12,16 @@ router.get('/notas', (req, res, next) => {
     Nota.find({}).then(notas => {
       res.send(notas)
     })
-  } else if (labels) {
+  } else if (labels && !color) {
     Nota.find({labels}).then(notas => {
       res.send(notas)
     })
-  } else if (color) {
+  } else if (color && !labels) {
     Nota.find({color}).then(notas => {
+      res.send(notas)
+    })
+  } else if (labels && color) {
+    Nota.find({labels, color}).then(notas => {
       res.send(notas)
     })
   }
@@ -34,15 +38,19 @@ router.get('/notas/:id', (req, res, next) => {
 })
 
 // POST - Adicionando uma nota
+// todo - 'url' deve ser única
+// todo - validacoes de outros campos
 router.post('/notas', (req, res, next) => {
-  
-  Nota.create(req.body).then(nota => {
+  let notaPost = util.processNota(req.body)
+    
+  Nota.create(notaPost).then(nota => {
     res.send(nota)
   }).catch(next)
 })
 
 // Atualizando uma nota
 router.put('/notas/:id', (req, res, next) => {
+  // todo - adicionar processNota
   Nota.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(() => {
     Nota.findOne({_id: req.params.id}).then(nota => {
       res.send(nota)
