@@ -30,7 +30,6 @@ router.get('/notas', (req, res, next) => {
 // GET individual de nota
 router.get('/notas/:id', (req, res, next) => {
   const { color, labels } = req.query
-  
 
   Nota.find({_id: req.params.id}).then(nota => {
     res.send(nota)
@@ -42,7 +41,7 @@ router.get('/notas/:id', (req, res, next) => {
 // todo - validacoes de outros campos
 router.post('/notas', (req, res, next) => {
   let notaPost = util.processNota(req.body)
-    
+
   Nota.create(notaPost).then(nota => {
     res.send(nota)
   }).catch(next)
@@ -50,8 +49,9 @@ router.post('/notas', (req, res, next) => {
 
 // Atualizando uma nota
 router.put('/notas/:id', (req, res, next) => {
-  // todo - adicionar processNota
-  Nota.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(() => {
+  let notaPost = util.processNota(req.body)
+  
+  Nota.findByIdAndUpdate(req.params.id, notaPost, {new: true}).then(() => {
     Nota.findOne({_id: req.params.id}).then(nota => {
       res.send(nota)
     })

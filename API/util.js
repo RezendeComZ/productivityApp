@@ -7,8 +7,12 @@ module.exports = {
     return obj
   },
   processNota: nota => {
-    nota.labels = nota.labels.map(label => label.toLowerCase())
-    nota.color = nota.color.toLowerCase()
+    if (nota.labels) {
+      nota.labels = nota.labels.map(label => label.toLowerCase())
+    }
+    if (nota.color) {
+      nota.color = nota.color.toLowerCase()
+    }
 
     return nota
   }
