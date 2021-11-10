@@ -11,6 +11,7 @@ mongoose.Promise = global.Promise // ver se isso ainda é necessário
 // Middlewares:
 app.use(express.json())
 app.use('/api', require('./routes/api')) // importando aqui ao invés de usar: const routes = require('./routes/api')
+app.use(express.static('public'))
 
 // error handlling
 app.use((err, req, res, next) => {
