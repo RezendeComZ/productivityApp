@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'Roboto';
+  src:  url('/layout/Roboto-Ligth.tff')  format('truetype'); /* usar formato melhor */
+}
+
+.h5 {
+  font-family: 'Roboto', sans-serif;
+}
+
+#desk {
+  padding: 10px;
+  display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.nota {
+  color: aliceblue;
+  background-color: rgb(18, 18, 18);
+  width: 220px;
+  min-height: 220px;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-left: 15px;
+  padding: 10px;
+  padding-top: 1px;
+  border-style: solid;
+  border-color: rgb(50, 50, 50); 
+}
+
+.nota:hover {
+  border-style: solid;
+  border-color: white;
+}
+
+.big {
+  font-size: 4vmax;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: rgb(37,	36,	37);
+}
