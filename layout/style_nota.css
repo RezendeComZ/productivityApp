@@ -12,7 +12,8 @@
   display: flex;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-direction: row; /* ficará row, mas não para acomodar as notas, mas sim para acomodar as colunas que acomodam as notas */
   justify-content: flex-start;
   align-items: flex-start;
   height: 900px;
