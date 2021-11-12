@@ -41,3 +41,8 @@ Curso react:
 Parei em: https://youtu.be/w7ejDZ8SWv8?t=1872
 
 Curso reactboostrap: https://youtu.be/8pKjULHzs0s?t=551
+
+
+---
+
+Layout, fazer divs verticais!
