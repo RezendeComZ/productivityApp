@@ -38,6 +38,6 @@ Schemas definem a estrutura de dados dos objetos, ex:
 npm start
 
 Curso react:
-Parei em: https://youtu.be/w7ejDZ8SWv8?t=2312
+Parei em: https://youtu.be/w7ejDZ8SWv8?t=2764
 
 Curso reactboostrap: https://youtu.be/8pKjULHzs0s?t=551

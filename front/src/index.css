@@ -20,7 +20,7 @@ code { /* todo - apagar quando não for utilizado */
   flex-wrap: wrap;
   /* flex-direction: column; */
   flex-direction: row; /* ficará row, mas não para acomodar as notas, mas sim para acomodar as colunas que acomodam as notas */
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: flex-start;
   height: 900px;
   border-style: solid;
