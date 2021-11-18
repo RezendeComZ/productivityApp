@@ -26,23 +26,35 @@ function App() {
 
   let [ columnsDivsPre, setcolumnsDivsPre ] = useState([])
   const notesByWidth = (noteSize = 250) => Math.floor((window.innerWidth - 20) / noteSize)
+
+  // let columnsContent = []
+
   const columnsGenerator = () => {
     columnsDivsPre = []
     for (let i = 1; i <= notesByWidth(); i++) {
-      columnsDivsPre.push(i)
+      columnsDivsPre.push([])
     }
-    setcolumnsDivsPre(columnsDivsPre)
+    setcolumnsDivsPre(columnsDivsPre) // necessario?
+
+    todasAsNotas.forEach(nota => {
+      let colunaDaVez = Math.min.apply(null, (columnsDivsPre.map(coluna => parseInt(coluna.length))))
+      columnsDivsPre[colunaDaVez].push(nota)
+
+      console.log(colunaDaVez);
+    })
+
+    console.log(columnsDivsPre);
   }
 
   useEffect(() => { // Executa somente uma vez, para criar as colunas na inicialização. Evita loop.
     columnsGenerator()
   }, [])
 
-    window.addEventListener('resize', () => {
-      if (columnsDivsPre.length !== notesByWidth()) {
-        columnsGenerator()
-      }
-    })
+  window.addEventListener('resize', () => {
+    if (columnsDivsPre.length !== notesByWidth()) {
+      columnsGenerator()
+    }
+  })
 
   return (
     <div id="desk">
