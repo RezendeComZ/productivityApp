@@ -10,16 +10,20 @@ function App() {
       },
       {
           "_id": "618311cf52916b5104f9e7a5",
-          "title": "Lista de compras",
+          "title": "Lista de compras - 3a",
           "body": "Comprar no mercado mais próximo:",
       },
       {
           "_id": "618311cf52916b5104f9e7a51",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam molestie mauris quis ex mattis, quis tempor eros vulputate. Cras cursus dignissim aliquet. Sed pulvinar diam vitae volutpat congue. Aliquam ornare nunc eu erat sodales, ut gravida augue egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam molestie mauris quis ex mattis, quis tempor eros vulputate. Cras cursus dignissim aliquet. Sed pulvinar diam vitae volutpat congue. Aliquam ornare nunc eu erat sodales, ut gravida augue egestas.",
+          "body": "4a, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam molestie mauris quis ex mattis, quis tempor eros vulputate. Cras cursus dignissim aliquet. Sed pulvinar diam vitae volutpat congue. Aliquam ornare nunc eu erat sodales, ut gravida augue egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam molestie mauris quis ex mattis, quis tempor eros vulputate. Cras cursus dignissim aliquet. Sed pulvinar diam vitae volutpat congue. Aliquam ornare nunc eu erat sodales, ut gravida augue egestas.",
       },
       {
           "_id": "618311cf52916b5104f9e7a5n",
-          "body": "Coisa única",
+          "body": "Coisa única, 5a",
+      },
+      {
+          "_id": "618311cf52916b5104f9e7a5n",
+          "body": "Comportamento estranho, principalmente no resize. Última nota",
       }
     ]
   )
@@ -29,20 +33,23 @@ function App() {
 
   // let columnsContent = []
 
+  const notasDistribuicao = () => {
+    todasAsNotas.forEach(nota => {
+      let colunaDaVez = Math.max.apply(null, (columnsDivsPre.map(coluna => parseInt(coluna.length)))) // acho que tá sem lógica
+      columnsDivsPre[colunaDaVez].push(nota)
+    })
+  }
+
   const columnsGenerator = () => {
     columnsDivsPre = []
     for (let i = 1; i <= notesByWidth(); i++) {
       columnsDivsPre.push([])
     }
-    setcolumnsDivsPre(columnsDivsPre) // necessario?
+    // setcolumnsDivsPre(columnsDivsPre) // necessario?
 
-    todasAsNotas.forEach(nota => {
-      let colunaDaVez = Math.min.apply(null, (columnsDivsPre.map(coluna => parseInt(coluna.length))))
-      columnsDivsPre[colunaDaVez].push(nota)
+    notasDistribuicao()
 
-      console.log(colunaDaVez);
-    })
-
+    setcolumnsDivsPre(columnsDivsPre)
     console.log(columnsDivsPre);
   }
 
@@ -60,7 +67,7 @@ function App() {
     <div id="desk">
     {columnsDivsPre.map(list => {
       return <div className="column">
-        <Notas notas={todasAsNotas}/>
+        <Notas notas={list}/>
       </div>
     })}
     </div>
