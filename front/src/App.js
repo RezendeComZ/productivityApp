@@ -38,6 +38,8 @@ function App() {
       let colunaDaVez = Math.max.apply(null, (columnsDivsPre.map(coluna => parseInt(coluna.length)))) // acho que tá sem lógica
       columnsDivsPre[colunaDaVez].push(nota)
     })
+    setcolumnsDivsPre(columnsDivsPre)
+
   }
 
   const columnsGenerator = () => {
@@ -45,11 +47,8 @@ function App() {
     for (let i = 1; i <= notesByWidth(); i++) {
       columnsDivsPre.push([])
     }
-    // setcolumnsDivsPre(columnsDivsPre) // necessario?
-
     notasDistribuicao()
 
-    setcolumnsDivsPre(columnsDivsPre)
     console.log(columnsDivsPre);
   }
 
