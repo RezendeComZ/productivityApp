@@ -1,9 +1,7 @@
-
-
 const Header = ({ msg }) => {
   return (
     <header>
-    <h4>Apenas um Header. {msg}</h4>      
+    <h4>Apenas um Header. {msg}</h4>
     </header>
   )
 }
