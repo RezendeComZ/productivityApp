@@ -33,6 +33,10 @@ Schemas definem a estrutura de dados dos objetos, ex:
   pinned: Boolean
 }
 
+# API
+
+node index.js
+
 # React
 
 npm start

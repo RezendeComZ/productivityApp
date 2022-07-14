@@ -1,0 +1,50 @@
+// Esse exemplo de JSON não está atualizado com o schema
+
+
+// Listas, o primeiro item é o título da lista e informações adicionais
+// Em listas que tem checkbox tem scape de /u para unchecked e /c para checked e /m para o título. O identificador é o título que tem /m, ele que indica se é checkbox
+
+// reminders contem um timestamp, ainda não definido o formato
+
+[
+    {
+        "_id": "618311c652916b5104f9e7a3",
+        "title": "Lista de compras",
+        "body": "Comprar no mercado mais próximo:",
+        "lists": [
+          [
+            "Comida",
+            "Arroz",
+            "Feijão"
+          ],
+          [
+              "/mLimpeza",
+              "/cDetergente",
+              "/uAmaciante",
+              "/uSabonete"
+          ],
+            [
+                "Pilha",
+                "Cabo USB"
+            ]
+        ],
+        "labels": [
+            "importante",
+            "trabalho"
+        ],
+        "pinned": false,
+        "color": "blue",
+        "reminders": [
+            1635884911075
+        ],
+        "permissions": [
+            {
+                "user": "joao1979",
+                "edit": true
+            }
+        ],
+        "url": "listaCompras",
+        "__v": 0
+    },
+    .........
+]

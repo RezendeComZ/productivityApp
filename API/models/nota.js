@@ -1,5 +1,5 @@
 // traduzir para inglês
-// Coloca msg de tipo inválido?
+// Colocar msg de tipo inválido?
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
