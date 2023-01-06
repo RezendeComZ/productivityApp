@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Notas from './components/Notas';
 
 function App() {
@@ -50,39 +50,39 @@ function App() {
   const [ todasAsNotas, setTodasAsNotas] = useState([])
 
   // Tamanho da nota:
-  const noteWidthPx = 260 // Dá para diminuir, olhar também largura
+  const noteWidthPx = 220 // Dá para diminuir, olhar também largura
 
-  // Retornando a quantidade de colunas baseado na largura da janela:
-  const columnsCount = () => Math.floor((window.innerWidth - 20) / noteWidthPx)
-  
-  // Preparando número de colunas baseado na largura da janela. Retornando array com arrays:
   let columns  = []
+
   const createColumns = () => {
-    for (let i = 0; i < columnsCount(); i++)
+    // Retornando a quantidade de colunas baseado na largura da janela:
+    let columnsCount = Math.floor((window.innerWidth - 20) / noteWidthPx)
+    for (let i = 0; i < columnsCount; i++)
     columns.push([])
   }
-  createColumns()
 
-  const columnsSize = () => {
-    let size = columns.map(arr => arr.length)
+// ! Ao invés de adicionar e depois contar o tamanho de cada coluna, melhor dar um INC a cada adição e já ter o tamanho da coluna?
+
+  // Retorna um vetor com o tamanho das colunas:
+  const columnsSize = () => { 
+    let size = columns.map(arr => arr.length) // ! armazenar em outro lugar ao invés de executar a função sempre?
     return size}
 
   const columnToBeFill = () => { 
-   let smallerValue = Math.min(...columnsSize())
+   let smallerValue = Math.min(...columnsSize()) // ! precisa executar esse columnsSize sempre para cada nota? parece ineficiente
    let index = columnsSize().findIndex(item => item === smallerValue)
 
    return index
   }
   
   const fillColumns = () => {
-    baseNotas.forEach((note, index) => {
+    baseNotas.forEach(note => {
       if (columnToBeFill() !== -1) { /// precisa disso?
         columns[columnToBeFill()].push(note)
       }
     })
   }
 
-  fillColumns()
 
   window.addEventListener('resize', () => {
     setTimeout(() => {
@@ -93,10 +93,13 @@ function App() {
     }, 500);
   })
 
-  useEffect(() => { // Executa somente uma vez
-    createColumns()
-    fillColumns()
-  }, [])
+  createColumns()
+  fillColumns()
+
+  // useEffect(() => { // Executa somente uma vez
+  //   createColumns()
+  //   fillColumns()
+  // }, [])
 
 // Template:
 

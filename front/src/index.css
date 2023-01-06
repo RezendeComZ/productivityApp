@@ -1,3 +1,7 @@
+/*
+O ideal seria a altura das notas ser idêntica a largura, pra combinar mais.
+*/
+
 body {
   background-color: rgb(37,	36,	37);
   margin: 0;
@@ -8,18 +12,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code { /* todo - apagar quando não for utilizado */
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 #desk {
-  padding: 10px;
   display: flex;
   display: flex;
   flex-wrap: wrap;
-  /* flex-direction: column; */
-  flex-direction: row; /* ficará row, mas não para acomodar as notas, mas sim para acomodar as colunas que acomodam as notas */
+  flex-direction: row; /* Row para acomodar as colunas que acomodam as notas */
   justify-content: space-around;
   align-items: flex-start;
   height: 900px;
@@ -30,13 +27,11 @@ code { /* todo - apagar quando não for utilizado */
 .nota {
   color: aliceblue;
   background-color: rgb(18, 18, 18);
-  width: 220px;
+  width: 210px;
   min-height: 220px;
-  border-radius: 8px;
-  margin-top: 10px;
-  margin-left: 10px;
+  border-radius: 15px;
+  margin-top: 5px;
   padding: 10px;
-  padding-top: 1px;
   border-style: solid;
   border-color: rgb(50, 50, 50); 
 }
